@@ -24,9 +24,9 @@ jobs:
       - name: Merge changes
         run: |
           cd vskbot007/SteveOCPP
-          git remote add source ../source
-          git fetch source
-          git merge --allow-unrelated-histories source/master  # Specify the source branch to merge
+          git remote add steve-community/steve
+          git fetch steve-community/steve
+          git merge --allow-unrelated-histories steve-community/steve/master  # Specify the source branch to merge
 
           # Handle conflicts if any
           # git mergetool  # If you want to resolve conflicts interactively
@@ -35,5 +35,5 @@ jobs:
 
       - name: Push changes
         run: |
-          cd /
+          cd vskbot007/SteveOCPP
           git push origin main 
