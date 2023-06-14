@@ -25,7 +25,7 @@ jobs:
         run: |
           cd vskbot007/SteveOCPP
           git remote add steve-community https://github.com/steve-community/steve
-          git fetch steve-community
+          git fetch steve-community/steve
           git merge --allow-unrelated-histories steve-community/steve/master  # Specify the source branch to merge
 
           # Handle conflicts if any
