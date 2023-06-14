@@ -23,7 +23,7 @@ jobs:
 
       - name: Merge changes
         run: |
-          cd destination
+          cd vskbot007/SteveOCPP
           git remote add source ../source
           git fetch source
           git merge --allow-unrelated-histories source/master  # Specify the source branch to merge
