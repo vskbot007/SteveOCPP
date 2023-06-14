@@ -1,0 +1,39 @@
+name: Merge Repositories
+on:
+  push:
+    branches:
+      - main  # Specify the branch you want to trigger the merge on
+
+jobs:
+  merge_repositories:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout destination repository
+        uses: actions/checkout@v2
+        with:
+          repository: SteveOCPP  # Specify the destination repository
+          path: /  # Specify the directory for the destination repository
+
+      - name: Checkout source repository
+        uses: actions/checkout@v2
+        with:
+          repository: steve  # Specify the source repository
+#           path: /  # Specify the directory for the source repository
+
+      - name: Merge changes
+        run: |
+          cd destination
+          git remote add source ../source
+          git fetch source
+          git merge --allow-unrelated-histories source/master  # Specify the source branch to merge
+
+          # Handle conflicts if any
+          # git mergetool  # If you want to resolve conflicts interactively
+
+          git commit -am "Merged changes from source repository"
+
+      - name: Push changes
+        run: |
+          cd /
+          git push origin main 
