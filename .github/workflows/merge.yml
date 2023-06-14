@@ -12,13 +12,13 @@ jobs:
       - name: Checkout destination repository
         uses: actions/checkout@v2
         with:
-          repository: SteveOCPP  # Specify the destination repository
+          repository: vskbot007/SteveOCPP  # Specify the destination repository
           path: /  # Specify the directory for the destination repository
 
       - name: Checkout source repository
         uses: actions/checkout@v2
         with:
-          repository: steve  # Specify the source repository
+          repository: steve-community/steve  # Specify the source repository
 #           path: /  # Specify the directory for the source repository
 
       - name: Merge changes
