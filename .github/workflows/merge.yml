@@ -52,9 +52,8 @@ jobs:
           repository: steve-community/steve
           ref: ${{ steps.latest_release.outputs.tag }}
 
-      - name: Add branch to destination repository
+      - name: Push changes
         run: |
           cd vsk/SteveOCPP
-          git checkout -b main  # Create and checkout the new branch
-          git push origin main  # Push the new branch to the remote repository
+          git push origin main 
 
