@@ -55,6 +55,6 @@ jobs:
       - name: Add branch to destination repository
         run: |
           cd vsk/SteveOCPP
-          git checkout -b master  # Create and checkout the new branch
-          git push origin master  # Push the new branch to the remote repository
+          git checkout -b main  # Create and checkout the new branch
+          git push origin main  # Push the new branch to the remote repository
 
