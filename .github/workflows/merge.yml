@@ -12,8 +12,8 @@ jobs:
       - name: Checkout destination repository
         uses: actions/checkout@v2
         with:
-          repository: vskbot007/SteveOCPP  # Specify the destination repository
-          path: vskbot007/SteveOCPP  # Specify the directory for the destination repository
+          repository: vsk/SteveOCPP  # Specify the destination repository
+          path: vsk/SteveOCPP  # Specify the directory for the destination repository
 
       - name: Checkout source repository
         uses: actions/checkout@v2
@@ -23,9 +23,9 @@ jobs:
 
       - name: Merge changes
         run: |
-          cd vskbot007/SteveOCPP
+          cd vsk/SteveOCPP
           git remote add steve-community https://github.com/steve-community/steve
-          git fetch steve-community/steve
+          git fetch steve-community
           git merge --allow-unrelated-histories steve-community/steve/master  # Specify the source branch to merge
 
           # Handle conflicts if any
@@ -33,7 +33,25 @@ jobs:
 
           git commit -am "Merged changes from source repository"
 
+      - name: Fetch latest release
+        run: |
+          cd vsk/SteveOCPP
+          git fetch --tags
+
+      - name: Get latest release tag
+        id: latest_release
+        run: |
+          cd vsk/SteveOCPP
+          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "::set-output name=tag::$latest_tag"
+
+      - name: Checkout latest release
+        uses: actions/checkout@v2
+        with:
+          repository: vsk/SteveOCPP
+          ref: ${{ steps.latest_release.outputs.tag }}
+
       - name: Push changes
         run: |
-          cd vskbot007/SteveOCPP
+          cd vsk/SteveOCPP
           git push origin main 
