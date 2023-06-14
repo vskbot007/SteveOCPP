@@ -1,3 +1,4 @@
+
 name: Merge Repositories
 on:
   push:
@@ -32,7 +33,7 @@ jobs:
           # git mergetool  # If you want to resolve conflicts interactively
 
           git commit -am "Merged changes from source repository"
-
+          
       - name: Fetch latest release
         run: |
           cd vsk/SteveOCPP
@@ -44,7 +45,7 @@ jobs:
           cd vsk/SteveOCPP
           latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "::set-output name=tag::$latest_tag"
-
+          
       - name: Checkout latest release
         uses: actions/checkout@v2
         with:
