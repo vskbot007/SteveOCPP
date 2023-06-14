@@ -36,20 +36,20 @@ jobs:
           
       - name: Fetch latest release
         run: |
-          cd vsk/SteveOCPP
+          cd steve-community/steve
           git fetch --tags
 
       - name: Get latest release tag
         id: latest_release
         run: |
-          cd vsk/SteveOCPP
+          cd steve-community/steve
           latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "::set-output name=tag::$latest_tag"
           
       - name: Checkout latest release
         uses: actions/checkout@v2
         with:
-          repository: vsk/SteveOCPP
+          repository: steve-community/steve
           ref: ${{ steps.latest_release.outputs.tag }}
 
       - name: Add branch to destination repository
