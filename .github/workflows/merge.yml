@@ -18,15 +18,15 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v2
         with:
-          repository: steve-community/steve  # Specify the source repository
-          path: steve-community/steve  # Specify the directory for the source repository
+          repository: vskbot007/sqlautoformatter   #steve-community/steve  # Specify the source repository
+          path: vskbot007/sqlautoformatter  # Specify the directory for the source repository
 
       - name: Merge changes
         run: |
           cd vskbot007/SteveOCPP
-          git remote add steve-community https://github.com/steve-community/steve
-          git fetch steve-community
-          git merge --allow-unrelated-histories steve-community/steve/tree/steve-3.6.0  # Specify the source branch to merge
+          git remote add vskbot007 https://github.com/vskbot007/sqlautoformatter
+          git fetch vskbot007
+          git merge --allow-unrelated-histories vskbot007/sqlautoformatter/master  # Specify the source branch to merge
 
           # Handle conflicts if any
           git mergetool  # If you want to resolve conflicts interactively
