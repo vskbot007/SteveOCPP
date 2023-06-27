@@ -36,4 +36,4 @@ jobs:
       - name: Push changes
         run: |
           cd vskbot007/SteveOCPP
-          git push origin main 
+          git push origin master
