@@ -13,8 +13,8 @@ jobs:
       - name: Checkout destination repository
         uses: actions/checkout@v2
         with:
-          repository: vsk/SteveOCPP  # Specify the destination repository
-          path: vsk/SteveOCPP  # Specify the directory for the destination repository
+          repository: vskbot007/SteveOCPP  # Specify the destination repository
+          path: vskbot007/SteveOCPP  # Specify the directory for the destination repository
 
       - name: Checkout source repository
         uses: actions/checkout@v2
