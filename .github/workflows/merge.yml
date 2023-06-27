@@ -26,7 +26,7 @@ jobs:
           cd vskbot007/SteveOCPP
           git remote add vskbot007 https://github.com/vskbot007/sqlautoformatter
           git fetch vskbot007
-          git merge --allow-unrelated-histories vskbot007/sqlautoformatter/master  # Specify the source branch to merge
+          git merge --allow-unrelated-histories vskbot007/sqlautoformatter/tree/master  # Specify the source branch to merge
 
           # Handle conflicts if any
           git mergetool  # If you want to resolve conflicts interactively
