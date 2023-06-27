@@ -1,4 +1,3 @@
-
 name: Merge Repositories
 on:
   push:
@@ -24,7 +23,7 @@ jobs:
 
       - name: Merge changes
         run: |
-          cd vsk/SteveOCPP
+          cd vskbot007/SteveOCPP
           git remote add steve-community https://github.com/steve-community/steve
           git fetch steve-community
           git merge --allow-unrelated-histories steve-community/steve/master  # Specify the source branch to merge
@@ -33,26 +32,8 @@ jobs:
           # git mergetool  # If you want to resolve conflicts interactively
 
           git commit -am "Merged changes from source repository"
-          
-      - name: Fetch latest release
-        run: |
-          cd steve-community/steve
-          git fetch --tags
-
-      - name: Get latest release tag
-        id: latest_release
-        run: |
-          cd steve-community/steve
-          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
-          echo "::set-output name=tag::$latest_tag"
-          
-      - name: Checkout latest release
-        uses: actions/checkout@v2
-        with:
-          repository: steve-community/steve
-          ref: ${{ steps.latest_release.outputs.tag }}
 
       - name: Push changes
         run: |
-          cd vsk/SteveOCPP
+          cd vskbot007/SteveOCPP
           git push origin main 
