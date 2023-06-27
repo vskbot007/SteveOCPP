@@ -2,7 +2,7 @@ name: Merge Repositories
 on:
   push:
     branches:
-      - main  # Specify the branch you want to trigger the merge on
+      - master  # Specify the branch you want to trigger the merge on
 
 jobs:
   merge_repositories:
